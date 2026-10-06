@@ -53,43 +53,12 @@ input[type=text],input[type=time],select{background:var(--c2);border:1px solid v
 .two{display:grid;gap:12px;margin-top:14px}.li2{padding:5px 0;font-size:14px}
 .vr{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}.vc{flex:0 0 130px;background:#07122b;border-radius:16px;padding:8px;font-size:13px}.vc img{width:100%;height:84px;object-fit:contain;margin-bottom:4px}
 .sp.noi{grid-template-columns:1fr}.fxa.noimg{min-height:90px}.fxa.noimg::after{content:'Illustration à venir';color:var(--m);font-size:13px}
+.phi{display:block;width:100%;max-width:360px;max-height:30vh;object-fit:contain;margin:10px auto;border-radius:16px}.tn.lg{font-size:64px}
 </style></head><body>
 <main id="v"></main><div id="mini"></div><nav id="nav"></nav><div id="pl" hidden></div><div id="toast"></div><audio id="au" preload="none" playsinline></audio>
 <script>
 const $=q=>document.querySelector(q);
-let P={
-A:{n:'Force',min:52,x:[
-['Squat bulgare',[3,4,4],'6-10|6-10|5-8',' /jambe',0,'A1','Ajoute le sac à dos quand 4×10 devient facile'],
-['Pompes archer',[3,4,4],'5-8',' /côté',90,'A1','Jamais à l\'échec'],
-['Tractions pronation',[3,4,4],'5-8|5-8|6-10','',0,'A2','Ajoute du lest en haut de la fourchette'],
-['Pike push-ups pieds surélevés',[3,3,3],'6-10','',90,'A2','Descente contrôlée'],
-['Soulevé roumain une jambe',[3,3,3],'8-12',' /jambe',0,'A3','Dos plat, hanche vers l\'arrière, sac à dos'],
-['Oiseau avec sac',[3,3,3],'12-20','',60,'A3','Penché en avant, serre les omoplates'],
-['Hollow body hold',[3,3,3],'25-45 s','',0,'A4','Bas du dos collé au sol'],
-['Dead hang',[2,2,2],'30-60 s','',45,'A4','Épaules actives, sans balancer']],
-st:['Fléchisseurs de hanche 30 s/côté','Quadriceps 30 s/côté','Ischio-jambiers 30 s/côté','Fessiers (figure 4) 30 s/côté','Grand dorsal (position de l\'enfant) 30 s','Épaules arrière (bras croisé) 30 s/côté']},
-B:{n:'Hypertrophie',min:57,x:[
-['Squat lesté',[3,4,4],'8-12','',0,'B1','Descente en 3 s'],
-['Chin-ups',[3,4,4],'6-10','',90,'B1','Lest quand 4×10 est facile'],
-['Pompes déclinées',[3,4,4],'8-15|8-15|8-12','',0,'B2','Descente en 3 s, durcis plutôt que d\'ajouter des reps'],
-['Rowing inversé',[3,4,4],'8-15','',75,'B2','Table parfaitement stable'],
-['Dips',[3,3,3],'8-15','',0,'B3','Support très stable, sinon pompes diamant lestées'],
-['Élévations latérales',[3,3,3],'12-20','',60,'B3','Monte à l\'horizontale, sans élan'],
-['Mollets une jambe',[3,3,3],'15-25',' /jambe',0,'B4','Amplitude complète'],
-['L-sit progression',[3,3,3],'15-30 s','',45,'B4','Tuck → une jambe → jambes tendues'],
-['Curl biceps (sac ou serviette)',[2,3,3],'10-15','',45,'','Coudes fixes']],
-st:['Pectoraux (mur) 30 s/côté','Triceps 30 s/côté','Biceps et avant-bras 30 s/côté','Grand dorsal 30 s','Mollets (mur) 30 s/côté','Quadriceps 30 s/côté']},
-C:{n:'Explosivité',min:47,x:[
-['Broad jump',[4,4,4],'3-5','',0,'C1','Chaque saut est maximal'],
-['Pompes explosives',[4,4,4],'4-8','',90,'C1','Stop quand la vitesse chute'],
-['Jump squat',[4,4,4],'5-8','',0,'C2','Jamais à l\'échec'],
-['Tractions explosives',[3,4,4],'3-5','',90,'C2','Seulement si les classiques sont maîtrisées'],
-['Pompes archer',[3,3,3],'5-8',' /côté',0,'C3','Technique avant tout'],
-['Bulgare explosif',[3,3,3],'5-6',' /jambe',75,'C3','Descente contrôlée, remontée explosive'],
-['Relevés de jambes',[3,3,3],'10-15','',0,'C4','Sans balancer le bassin'],
-['Gainage latéral',[3,3,3],'30-45 s',' /côté',0,'C4','Corps aligné'],
-['Élévations latérales',[3,3,3],'12-20','',45,'C4','Sans élan']],
-st:['Mollets 30 s/côté','Quadriceps 30 s/côté','Ischio-jambiers 30 s/côté','Fléchisseurs de hanche 30 s/côté','Cobra 30 s','Pectoraux (mur) 30 s/côté']}};
+let P={};
 const W=[['Évaluation','3',1],['Progression','2-3',1],['Progression','2',1],['Deload','4',.65],['Hypertrophie','2',1],['Progression','1-2',1],['Pic du bloc','1',1],['Deload','4',.65],['Intensification','1-2',1],['Qualité et force','1',1],['Semaine forte','1',1],['Tests','—',.5]];
 let DAY={2:'A',4:'B',6:'C'};const BL=['Fondations','Hypertrophie','Intensification'],DN=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 const Q=['Dépasse la version d\'hier.','Chaque série éveille ton ki.','La technique avant l\'ego, comme un vrai maître.','La régularité forge les légendes.','Le repos fait aussi partie de l\'entraînement.','Une rep de plus, un cran plus haut.'];
@@ -97,7 +66,7 @@ const TS=['Pompes classiques','Pompes diamant','Tractions','Dead hang (s)','Holl
 let st=JSON.parse(localStorage.fbp2||'null')||{start:new Date().toISOString().slice(0,10),xp:0,logs:[],tests:{},done:{}};
 const save=()=>{localStorage.fbp2=JSON.stringify(st)};
 const wk=()=>Math.min(12,Math.max(1,Math.floor((Date.now()-new Date(st.start))/6048e5)+1)),bl=w=>Math.ceil(w/4)-1;
-const ns=(x,w)=>Math.max(1,Math.round(x[1][bl(w)]*W[w-1][2]*(st.vf||1))),rp=(x,w)=>{const a=x[2].split('|');return a[Math.min(bl(w),a.length-1)]};
+const ns=(x,w)=>Math.max(1,Math.round(x[1][bl(w)]*(st.plan?W[w-1][2]:1)*(st.vf||1))),rp=(x,w)=>{const a=x[2].split('|');return a[Math.min(bl(w),a.length-1)]};
 const nextS=()=>{for(let i=1;i<8;i++){const d=(new Date().getDay()+i)%7;if(DAY[d])return DAY[d]}};
 let tab='h',ses=null,tid;
 function toast(m){const t=$('#toast');t.textContent=m;t.className='on';clearTimeout(tid);tid=setTimeout(()=>t.className='',2600)}
@@ -109,9 +78,9 @@ return `<div class="hd"><div><div class="m">${DN[td]} ${d.toLocaleDateString('fr
 <div class="wkb">${sp}</div>${bn()}
 <div class="hero" style="--sc:${SC[k]}"><div class="ltr">${k}</div><div style="opacity:.8">${DAY[td]?'Séance du jour':'Prochaine séance, '+DN[dayOf(k)]}</div><h1 style="font-size:52px;margin:6px 0">${n.n}</h1><div class="chips"><span>${n.min} min</span><span>${n.x.length} exercices</span><span>${W[w-1][1]} rép. en réserve</span></div><button class="btn wh" onclick="ses={k:'${k}',w:${w}};render()">${dn?'Refaire la séance':'Voir la séance'}</button></div>
 ${t?`<div class="rgs">${rg(sm('k'),t.kc,'#fb923c','Calories',Math.round(sm('k')),'/ '+t.kc)}${rg(sm('p'),t.pr,'#4f8cff','Protéines',Math.round(sm('p')),'/ '+t.pr+' g')}${rg(st.wa[dk()]||0,t.wa,'#22d3ee','Eau',((st.wa[dk()]||0)/1000).toFixed(1),'/ '+(t.wa/1000).toFixed(1)+' L')}</div>`:`<div class="card" onclick="go('r')"><b>Crée ton profil</b><div class="m">Pour obtenir tes objectifs du jour en calories, protéines et eau.</div></div>`}
-${qc()}<div class="card" onclick="go('g')"><div class="m">Ton rang</div><b style="color:${RC[r]};font-size:18px">${RK[r]}</b> <span class="m">niveau ${L}, ${st.xp} XP, 🔥 ${streak()} j</span></div>
+${qc()}${wkc()}<div class="card" onclick="go('g')"><div class="m">Ton rang</div><b style="color:${RC[r]};font-size:18px">${RK[r]}</b> <span class="m">niveau ${L}, ${st.xp} XP, 🔥 ${streak()} j</span></div>
 <div class="card"><div class="m">Coach Blue</div><div style="font:800 italic 22px/1.15 var(--f);margin-top:4px">${Q[Math.floor(Date.now()/864e5)%Q.length]}</div></div>`},
-p(){const w=wk();return `<h1>Programme</h1><div class="m">${st.plan?'Cycle '+(st.cy||1)+', semaine '+w+' sur 12':'Programme Blue 2.0 par défaut'}</div><button class="btn g s" style="margin-top:10px" onclick="go('b')">${st.plan?'Refaire mon bilan':'Générer mon programme'}</button> <button class="btn g s" style="margin-top:10px" onclick="go('x')">Bibliothèque d\'exercices</button><h2>Séances</h2>`+Object.keys(P).map(k=>`<details class="card"><summary><b>Séance ${k} : ${P[k].n}</b><span class="m">${DN[dayOf(k)]}</span></summary>${P[k].x.map(x=>`<div class="li"><span>${x[0]}</span><span class="m">${ns(x,w)}×${rp(x,w)}${x[3]}</span></div>`).join('')}</details>`).join('')+`<h2>Les 12 semaines</h2>`+W.map((x,i)=>`<div class="card wk ${i+1==w?'cur':''}"><b>S${i+1}</b><span>${x[0]}</span><span class="m">RIR ${x[1]}</span></div>`).join('')},
+p(){const w=wk();return `<h1>Programme</h1><div class="m">${st.plan?'Cycle '+(st.cy||1)+', semaine '+w+' sur 12':'Programme FitBlue par défaut'}</div><button class="btn g s" style="margin-top:10px" onclick="go('b')">${st.plan?'Refaire mon bilan':'Personnaliser avec le coach'}</button> <button class="btn g s" style="margin-top:10px" onclick="go('x')">Bibliothèque d\'exercices</button><h2>Séances</h2>`+Object.keys(P).map(k=>`<details class="card"><summary><b>Séance ${k} : ${P[k].n}</b><span class="m">${DN[dayOf(k)]}</span></summary>${P[k].x.map(x=>`<div class="li"><span>${x[0]}</span><span class="m">${ns(x,w)}×${rp(x,w)}${x[3]}</span></div>`).join('')}</details>`).join('')+`<h2>Les 12 semaines</h2>`+W.map((x,i)=>`<div class="card wk ${i+1==w?'cur':''}"><b>S${i+1}</b><span>${x[0]}</span><span class="m">RIR ${x[1]}</span></div>`).join('')},
 g(){const s=S(),L=lv(st.xp),r=rk(L),p=pw(),gp=Math.round(p.reduce((a,b)=>a+b)/p.length),lo=xl(L),hi=xl(L+1),u=bc(s),wt=st.wt.slice(-10);
 return `<h1>Progression</h1>
 <div class="card"><div style="display:flex;gap:14px;align-items:center"><div class="emb" style="--rc:${RC[r]}">${L}</div><div style="flex:1"><div class="big" style="font-size:30px;color:${RC[r]}">${RK[r]}</div><div class="m">Niveau ${L}, ${st.xp} XP</div><div class="m">${TI()}, 🔥 ${streak()} jours</div></div></div><div class="bar"><i style="width:${(st.xp-lo)/(hi-lo)*100}%"></i></div><div class="m" style="margin-top:6px">${hi-st.xp} XP pour le niveau ${L+1}</div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn g s" onclick="showRk=!showRk;render()">${showRk?'Masquer':'Voir'} les rangs</button><button class="btn s" onclick="sh()">Partager mon rang</button></div>${showRk?'<div style="margin-top:10px">'+RK.map((n,i)=>`<div class="li"><div><span style="color:${RC[i]}">${i<=r?'●':'🔒'} ${n}</span><div class="m">${RQ[i]}</div></div><span class="m">Niv. ${i*10+1} à ${i*10+10}${i==r?', tu es ici':''}</span></div>`).join('')+'</div>':''}</div>
@@ -132,7 +101,7 @@ return `<h1>Nutrition</h1><div class="m">Ton énergie du jour, calculée pour to
 <h2>Liste de courses (7 jours)</h2><div class="card"><div class="m">Quantités adaptées à tes besoins en calories.</div>${shH(t)}</div>`},
 r(){const p=st.pf||{},t=T(),o=(v,a)=>a.map(([k,l])=>`<option value="${k}" ${p[v]==k?'selected':''}>${l}</option>`).join('');
 return `<div class="hd"><h1>${p.n?'Mon profil':'Bienvenue'}</h1><img src="${LOGO}" width="54" height="54" style="border-radius:50%" alt=""></div><div class="m">${p.n?'Tes objectifs se calculent à partir de ces informations.':'Crée ton profil pour personnaliser tes calories, tes protéines et ton eau.'}</div>
-<div class="card"><div class="m">Pseudo</div><input id="pn" type="text" maxlength="20" value="${p.n||''}" placeholder="Ton pseudo"><div class="fg"><div><div class="m">Sexe</div><select id="ps">${o('sx',[['h','Homme'],['f','Femme']])}</select></div><div><div class="m">Âge</div><input id="pa" type="number" inputmode="numeric" value="${p.age||''}"></div><div><div class="m">Taille (cm)</div><input id="ph" type="number" inputmode="numeric" value="${p.h||''}"></div><div><div class="m">Poids (kg)</div><input id="pw" type="number" inputmode="decimal" value="${p.w||''}"></div></div><div class="m">Mon focus</div><select id="pg">${o('g',[['gain','Prendre du muscle'],['perte','Perdre du gras'],['maintien','Maintien, recomposition']])}</select><div class="m" style="margin-top:10px">Activité hors séances</div><select id="pc">${o('act',[['s','Sédentaire'],['l','Légèrement actif'],['m','Actif'],['a','Très actif']])}</select><div style="height:12px"></div><button class="btn" onclick="sp()">Enregistrer</button></div>
+<div class="card"><div class="m">Pseudo</div><input id="pn" type="text" maxlength="20" value="${p.n||''}" placeholder="Ton pseudo"><div class="fg"><div><div class="m">Sexe</div><select id="ps">${o('sx',[['h','Homme'],['f','Femme']])}</select></div><div><div class="m">Âge</div><input id="pa" type="number" inputmode="numeric" value="${p.age||''}"></div><div><div class="m">Taille (cm)</div><input id="ph" type="number" inputmode="numeric" value="${p.h||''}"></div><div><div class="m">Poids (kg)</div><input id="pw" type="number" inputmode="decimal" value="${p.w||''}"></div></div><div class="m">Mon focus</div><select id="pg">${o('g',[['gain','Prendre du muscle'],['perte','Perdre du gras'],['maintien','Maintien, recomposition']])}</select><div class="m" style="margin-top:10px">Activité hors séances</div><select id="pc">${o('act',[['s','Sédentaire'],['l','Légèrement actif'],['m','Actif'],['a','Très actif']])}</select><div class="m" style="margin-top:10px">Matériel disponible</div><select id="pe">${o('eq',[['sac','Sac à dos'],['aucun','Aucun matériel'],['barre','Sac à dos et barre de traction']])}</select><div style="height:12px"></div><button class="btn" onclick="sp()">Enregistrer</button></div>
 ${t?`<div class="card"><b>Tes objectifs du jour</b><div class="m">${t.kc} kcal, ${t.pr} g de protéines, ${t.ca} g de glucides, ${t.fa} g de lipides, ${t.wa} ml d'eau</div></div>`:''}
 ${bmiCard()}<div class="card m">Tes données restent sur ce téléphone. La connexion avec sauvegarde en ligne demande un serveur, à ajouter plus tard.</div>`+rmc()+V.m()+V.r2()},
 b(){const b=(st.plan&&st.plan.bl)||{days:[2,4,6],dur:45,bar:1,pu:20,pl:0,sq:30,pk:45},end=st.plan&&wr()>12;
@@ -150,45 +119,45 @@ return `<h2>Statistiques</h2><div class="stat"><div><b>${st.logs.length}</b><spa
 <h2>Historique</h2>${st.logs.slice(-6).reverse().map(l=>`<div class="card"><b>Séance ${l.s}</b> <span class="m">semaine ${l.w}, ${new Date(l.d).toLocaleDateString('fr-FR')}, ${l.c} séries</span></div>`).join('')||'<div class="m">Aucune séance enregistrée.</div>'}`},
 m(){return `<h2>Ma musique</h2><div class="m">Ajoute tes propres morceaux : ils restent sur ton téléphone, même hors ligne, et tournent en boucle.</div><div style="height:12px"></div><label class="btn" style="display:block;text-align:center">+ Importer des musiques<input type="file" accept="audio/*,.m4a,.mp3,.aac,.wav,.ogg" multiple hidden onchange="imp(this.files)"></label><div class="card">${TR.length?'':'<div class="m">Aucun morceau pour le moment.</div>'}${TR.map((t,i)=>`<div class="tk ${i==cur?'on':''}"><button class="pl" onclick="play(${i})">${i==cur&&!au.paused?'⏸':'▶'}</button><span>${t.n}</span>${t.id?`<button class="pl" onclick="del(${t.id})">✕</button>`:''}</div>`).join('')}</div>`},
 r2(){return `<h2>Réglages</h2><div class="card"><label class="chk"><input type="checkbox" ${st.voice!==false?'checked':''} onchange="st.voice=this.checked;save()">Voix du coach pendant la séance</label><label class="chk"><input type="checkbox" ${st.auto?'checked':''} onchange="st.auto=this.checked;save()">Lancer la musique au début de la séance</label><label class="chk"><input type="checkbox" ${st.au!==false?'checked':''} onchange="st.au=this.checked;save();render()">Aura de rang (couleur d\'accent)</label></div><div class="card"><div class="m">Début du programme</div><input type="date" value="${st.start}" onchange="st.start=this.value;save();render()"></div>${ip?'<button class="btn" style="margin:10px 0" onclick="ip.prompt()">Installer l\'application</button>':''}<button class="btn g" style="margin:6px 0" onclick="exp()">Exporter mes données</button><button class="btn g" style="color:#f87171" onclick="if(confirm('Tout effacer ? Séances, tests et XP seront perdus.')){localStorage.removeItem('fbp2');location.reload()}">Tout réinitialiser</button>`}};
-const SC={A:'#4f8cff',B:'#ffb020',C:'#ff5a5f',D:'#a78bfa',E:'#2dd4a0',Q:'#c084fc'};
+const SC={A:'#4f8cff',B:'#ffb020',C:'#ff5a5f',D:'#a78bfa',E:'#2dd4a0',Q:'#c084fc',M:'#2dd4a0'};
 const WU=[['Jumping jacks',30],['Montées de genoux',30],['Cercles de bras',20],['Rotations de hanches',20],['Cercles de chevilles',20]];
 let pl=null;
 function SV(){const{k,w}=ses,n=P[k],qq=qsIdx(w,k);if(qq!==null&&!ses.nq&&!st.done[w+'-'+k])return QV(qq,k,w);return `<button class="btn g s" onclick="ses=null;render()">Retour</button><div class="hero" style="--sc:${SC[k]};margin-top:12px"><div class="ltr">${k}</div><h1 style="font-size:46px">${n.n}</h1><div class="chips"><span>${n.min} min</span><span>Semaine ${w}</span><span>${W[w-1][1]} rép. en réserve</span></div></div>
-<div class="card"><div class="li"><b>Échauffement</b><span class="m">2 min, guidé</span></div>${n.x.map(x=>`<div class="li"><span>${x[0]}</span><span class="m">${ns(x,w)}×${rp(x,w)}${x[3]}, repos ${x[4]||20} s</span></div>`).join('')}<div class="li"><b>Étirements</b><span class="m">5 min, guidé</span></div></div>
+<div class="card"><div class="li"><b>Échauffement</b><span class="m">2 min, guidé</span></div>${n.x.map(x=>`<div class="li"><span style="display:flex;gap:10px;align-items:center">${x[8]?`<img src="ph/${x[8]}.webp" style="width:72px;height:44px;object-fit:contain;background:#050a18;border-radius:8px" alt="">`:''}${x[0]}</span><span class="m">${ns(x,w)}×${rp(x,w)}${x[3]}, repos ${x[4]||20} s</span></div>`).join('')}<div class="li"><b>Étirements</b><span class="m">5 min, guidé</span></div></div>
 <div class="card m">Tout est guidé : voix, compte à rebours des 3 dernières secondes, chrono pour les gainages et repos après chaque série.</div><button class="btn" onclick="go2()">Démarrer la séance</button>`}
 function build(k,w){const n=P[k],S=[{t:'p',n:'Prêt ?',d:5,sub:'La séance démarre'}];
 WU.forEach(([a,d])=>S.push({t:'w',n:a,d,sub:'Échauffement'}));
-n.x.forEach((x,i)=>{const c=ns(x,w),R=rp(x,w),T=/s$/.test(R),[lo,hi]=R.replace(' s','').split('-').map(x=>+x||0),sd=T&&/côté/.test(x[3]);
-for(let j=0;j<c;j++){(sd?['gauche','droit']:[0]).forEach(sx=>S.push({t:T?'h':'e',n:x[0],i,j,c,R,lo,hi,u:x[3],tip:x[6],sx,sub:'Exercice '+(i+1)+' sur '+n.x.length}));if(i<n.x.length-1||j<c-1)S.push({t:'r',d:x[4]||20,sub:'Repos'})}});
-n.st.forEach(z=>{const m=z.match(/^(.*) (\d+) s(\/côté)?$/);(m[3]?['gauche','droit']:[0]).forEach(sx=>S.push({t:'z',n:m[1],d:m[3]?20:+m[2],sx,sub:'Étirements'}))});return S}
+n.x.forEach((x,i)=>{const c=ns(x,w),R=rp(x,w),T=/s$/.test(R),[lo,hi=lo]=R.replace(' s','').split('-').map(x=>+x||0),sd=T&&/côté/.test(x[3]);
+for(let j=0;j<c;j++){(sd?['gauche','droit']:[0]).forEach(sx=>S.push({t:T?'h':'e',n:x[0],i,j,c,R,lo,hi,u:x[3],tip:x[6],sx,img:x[8],dur:lo,up:x[7]=='q',sub:'Exercice '+(i+1)+' sur '+n.x.length}));if(i<n.x.length-1||j<c-1)S.push({t:'r',d:x[4]||20,sub:'Repos'})}});
+n.st.forEach(z=>{const m=z.match(/^(.*) (\d+) s(\/côté)?$/);(m[3]?['gauche','droit']:[0]).forEach(sx=>S.push({t:'z',n:m[1],d:m[3]?(n.sd||20):+m[2],sx,sub:'Étirements'}))});return S}
 function go2(){const{k,w}=ses,q=ses.q;ses=null;if(q!==undefined){const keep=P;P=Object.assign({},P,{Q:qSess(q)});const S=build('Q',w);P=keep;qIns(S,q);pl={k:'Q',rk:k,q,w,S,i:0,e:{},c:0,t0:Date.now()}}else pl={k,w,S:build(k,w),i:0,e:{},c:0,t0:Date.now()};if(st.auto&&cur<0)play(0);try{navigator.wakeLock.request('screen').then(l=>pl.wl=l)}catch(e){}enter()}
 const nextN=i=>pl.S.slice(i+1).find(x=>x.t!='r');
 function speak(t){if(st.voice===false||!window.speechSynthesis)return;const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.onstart=()=>au.volume=.35;u.onend=()=>au.volume=1;speechSynthesis.cancel();speechSynthesis.speak(u)}
 function enter(){const s=pl.S[pl.i];clearInterval(pl.ti);pl.paused=0;pl.lb=-1;if(s.d)pl.end=Date.now()+s.d*1e3;if(s.t=='h'){pl.ph='ready';pl.end=Date.now()+3e3}
 const nx=nextN(pl.i),sx=s.sx?', côté '+s.sx:'',T={p:'Prêt ? On commence.',w:s.n,z:s.n+sx,h:s.n+sx+', tiens la position',e:s.n+', série '+(s.j+1)+' sur '+s.c+', '+s.R+' répétitions',r:'Repos, '+s.d+' secondes. Ensuite, '+(nx?nx.n:'')};speak(T[s.t]);
 if(s.t!='e')pl.ti=setInterval(tick,200);draw()}
-function val(){const s=pl.S[pl.i],tm=s.d?Math.max(0,Math.ceil((pl.end-Date.now())/1e3)):0;if(s.t=='h'&&pl.ph=='run'){const el=Math.floor((Date.now()-pl.run)/1e3);return[el,Math.min(1,el/s.hi)]}if(s.t=='h')return[tm,tm/3];return[tm,s.d?tm/s.d:0]}
+function val(){const s=pl.S[pl.i],tm=s.d?Math.max(0,Math.ceil((pl.end-Date.now())/1e3)):0;if(s.t=='h'&&pl.ph=='run'){if(s.up){const el=Math.floor((Date.now()-pl.run)/1e3);return[el,Math.min(1,el/(s.hi||s.lo||1))]}const rm=Math.max(0,Math.ceil((pl.end-Date.now())/1e3));return[rm,rm/s.dur]}if(s.t=='h')return[tm,tm/3];return[tm,s.d?tm/s.d:0]}
 function tick(){if(pl.paused)return;const s=pl.S[pl.i],[v]=val();
-if(s.t=='h'&&pl.ph=='run'){if(v!=pl.lb){pl.lb=v;(v==s.lo||v==s.hi)&&beep(1200)}}
-else{if(v<=3&&v>0&&v!=pl.lb){pl.lb=v;beep(700,.12)}if(v<=0){if(s.t=='h'){pl.ph='run';pl.run=Date.now();pl.lb=-1;beep(1000);draw()}else nxt();return}}upd()}
-function upd(){const[v,r]=val(),n=$('#pl .tn');if(n){n.textContent=v;$('#pl .tp').style.strokeDashoffset=327*(1-r)}}
+if(s.t=='h'&&pl.ph=='run'){if(s.up){if(v!=pl.lb){pl.lb=v;(v==s.lo||v==s.hi)&&beep(1200)}}else{if(v<=3&&v>0&&v!=pl.lb){pl.lb=v;beep(700,.12)}if(v<=0){beep(1000);done(1);return}}}
+else{if(v<=3&&v>0&&v!=pl.lb){pl.lb=v;beep(700,.12)}if(v<=0){if(s.t=='h'){pl.ph='run';pl.run=Date.now();pl.end=Date.now()+s.dur*1e3;pl.lb=-1;beep(1000);draw()}else nxt();return}}upd()}
+function upd(){const[v,r]=val(),n=$('#pl .tn');if(n){n.textContent=fm(v);n.className='tn'+(v>=100?' lg':'');$('#pl .tp').style.strokeDashoffset=327*(1-r)}}
 function pz(){if(pl.paused){pl.end=Date.now()+pl.rem;pl.paused=0}else{pl.rem=pl.end-Date.now();pl.paused=1}draw()}
 function draw(){const s=pl.S[pl.i],N=pl.S.length,nx=nextN(pl.i),[v,r]=val();let h='',btn='',cap=s.tip||'',ttl=s.n;
 if(s.sx)ttl+=` <span style="font-size:.55em;opacity:.7">côté ${s.sx}</span>`;
-if(s.t=='h'){if(pl.ph=='ready'){cap='Mets-toi en position';btn=`<button class="btn" onclick="pl.ph='run';pl.run=Date.now();pl.lb=-1;draw()">Commencer</button>`}else{cap=`Objectif : ${s.lo} à ${s.hi} s. `+(s.tip||'');btn=`<button class="btn" onclick="done()">Terminé</button>`}}
+if(s.t=='h'){if(pl.ph=='ready'){cap='Mets-toi en position';btn=`<button class="btn" onclick="pl.ph='run';pl.run=Date.now();pl.end=Date.now()+pl.S[pl.i].dur*1e3;pl.lb=-1;draw()">Commencer</button>`}else{cap=(s.up?`Objectif : ${s.lo} à ${s.hi} s. `:'Tiens jusqu\'à zéro. ')+(s.tip||'');btn=`<button class="btn" onclick="done()">Terminé</button>`}}
 else if(s.t=='e'){const lg=[...st.logs].reverse().find(l=>l.s==pl.k&&l.e[s.n]),pv=lg&&lg.e[s.n][s.j];
 h=`<div class="rep"><div class="m">Objectif</div><div class="big">${s.R}</div><div class="m">répétitions${s.u}</div></div><div class="ins"><div><div class="m">Répétitions faites</div><input id="pr" type="number" inputmode="numeric" placeholder="${s.lo}"></div><div><div class="m">Charge (kg)</div><input id="pk" type="number" inputmode="decimal" value="${pv&&pv.k?pv.k:''}" placeholder="0"></div></div>${pv?`<div class="m" style="text-align:center">Dernière fois : ${pv.r} rép.${pv.k?' à '+pv.k+' kg':''}</div>`:''}`;btn=`<button class="btn" onclick="done()">Série terminée</button>`}
 else if(s.t=='r'){ttl='Repos';cap='Respire, hydrate-toi.';btn=`<button class="btn g" onclick="pl.end+=15e3;pl.S[pl.i].d+=15;draw()">+15 s</button><button class="btn" onclick="nxt()">Passer</button>`}
 else btn=`<button class="btn g" onclick="pz()">${pl.paused?'Reprendre':'Pause'}</button><button class="btn" onclick="nxt()">Suivant</button>`;
 const P2=$('#pl');P2.hidden=false;P2.style.setProperty('--sc',SC[pl.k]);
-P2.innerHTML=`<div class="top"><button onclick="quit()">✕</button><div class="pb"><i style="width:${pl.i/N*100}%"></i></div><span class="m">${pl.i+1}/${N}</span></div><div class="sub">${s.sub}</div><h1>${ttl}</h1><div class="tip">${cap}</div>${demoFor(s.n)}${s.t!='e'?`<div class="rw"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="tr"/><circle cx="60" cy="60" r="52" class="tp" style="stroke-dashoffset:${327*(1-r)}"/></svg><b class="tn">${v}</b></div>`:''}${h}<div class="ctl"><button class="btn g s" onclick="prv()">◀</button>${btn}</div><div class="nxt"><span class="m">Suivant</span><br><b>${nx?nx.n+(nx.sx?' (côté '+nx.sx+')':''):'Fin de séance'}</b></div>`}
-function done(){const s=pl.S[pl.i];let r,k=0;if(s.t=='e'){r=+$('#pr').value||s.lo;k=+$('#pk').value||0}else r=Math.floor((Date.now()-pl.run)/1e3);(pl.e[s.n]=pl.e[s.n]||[]).push({r,k});pl.c++;nxt()}
+P2.innerHTML=`<div class="top"><button onclick="quit()">✕</button><div class="pb"><i style="width:${pl.i/N*100}%"></i></div><span class="m">${pl.i+1}/${N}</span></div><div class="sub">${s.sub}</div><h1>${ttl}</h1><div class="tip">${cap}</div>${s.img?`<img class="phi" src="ph/${s.img}.webp" alt="">`:demoFor(s.n)}${s.t!='e'?`<div class="rw"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="tr"/><circle cx="60" cy="60" r="52" class="tp" style="stroke-dashoffset:${327*(1-r)}"/></svg><b class="tn${v>=100?' lg':''}">${fm(v)}</b></div>`:''}${h}<div class="ctl"><button class="btn g s" onclick="prv()">◀</button>${btn}</div><div class="nxt"><span class="m">Suivant</span><br><b>${nx?nx.n+(nx.sx?' (côté '+nx.sx+')':''):'Fin de séance'}</b></div>`}
+function done(full){const s=pl.S[pl.i];let r,k=0;if(s.t=='e'){r=+$('#pr').value||s.lo;k=+$('#pk').value||0}else r=full?s.dur:s.up?Math.floor((Date.now()-pl.run)/1e3):Math.min(s.dur,Math.floor((Date.now()-pl.run)/1e3));(pl.e[s.n]=pl.e[s.n]||[]).push({r,k});pl.c++;nxt()}
 function nxt(){if(pl.i>=pl.S.length-1)return fin();pl.i++;enter()}
 function prv(){let i=pl.i-1;while(i>0&&pl.S[i].t=='r')i--;pl.i=Math.max(0,i);enter()}
 function quit(){if(confirm('Arrêter la séance ?'))fin(1)}
 function fin(q){clearInterval(pl.ti);try{speechSynthesis.cancel();pl.wl&&pl.wl.release()}catch(e){}au.volume=1;$('#pl').hidden=true;const c=pl.c,m=Math.max(1,Math.round((Date.now()-pl.t0)/6e4));
-if(c){const L1=lv(st.xp),xm=L1<=30?1:L1<=60?.85:L1<=90?.7:.55,g=Math.round((c*3+(q?0:30))*xm)+hardSets(pl.e)*4,l0=L1;st.logs.push({d:Date.now(),s:pl.rk||pl.k,w:pl.w,c,m,e:pl.e});st.xp+=g;if(lv(st.xp)>l0)setTimeout(()=>toast('Niveau '+lv(st.xp)+', rang '+RK[rk(lv(st.xp))]),3000);if(!q)st.done[pl.w+'-'+(pl.rk||pl.k)]=1;if(pl.q!==undefined&&!q)qDone();save();toast((q?'Séance enregistrée':'Séance terminée')+', '+m+' min, +'+g+' XP');if(!q)speak('Séance terminée. Bravo Blue !')}
-pl=null;tab='h';render()}
+if(c){const L1=lv(st.xp),xm=L1<=30?1:L1<=60?.85:L1<=90?.7:.55,g=Math.round((c*3+(q?0:30))*xm)+hardSets(pl.e)*4,l0=L1;st.logs.push({d:Date.now(),s:pl.rk||pl.k,w:pl.w,c,m,e:pl.e});st.xp+=g;if(lv(st.xp)>l0)setTimeout(()=>toast('Niveau '+lv(st.xp)+', rang '+RK[rk(lv(st.xp))]),3000);if(!q)st.done[pl.w+'-'+(pl.rk||pl.k)]=1;if(!q&&!st.plan&&pl.k!='M'){dpProg(pl.rk||pl.k,pl.e);setDefault()}if(pl.q!==undefined&&!q)qDone();save();toast((q?'Séance enregistrée':'Séance terminée')+', '+m+' min, +'+g+' XP');if(!q)speak('Séance terminée. Bravo Blue !')}
+if(pl.k=='M'&&!q){(st.wk2=st.wk2||{})[dk()]=1;st.xp+=30;save();toast('Marche validée, +30 XP')}pl=null;tab='h';render()}
 const tt=(i,j,v)=>{(st.tests[i]=st.tests[i]||['',''])[j]=v;save();render()};
 function exp(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(st,null,1)],{type:'application/json'}));a.download='fitblue-donnees.json';a.click()}
 function beep(f=880,l=.5){navigator.vibrate&&navigator.vibrate(l>.3?[180,80,180]:40);try{const c=window._ac||(window._ac=new AudioContext()),o=c.createOscillator(),g=c.createGain();c.resume();o.connect(g);g.connect(c.destination);o.frequency.value=f;g.gain.setValueAtTime(.22,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+l);o.start();o.stop(c.currentTime+l)}catch(e){}}
@@ -210,7 +179,7 @@ const RK=['Recrue','Initié','Disciple','Athlète','Athlète confirmé','Guerrie
 const xl=l=>Math.round(54*Math.pow(l-1,1.5)*(1+Math.max(0,l-40)/80)),lv=x=>{let l=1;while(l<120&&xl(l+1)<=x)l++;return l},rk=l=>Math.min(11,Math.floor((l-1)/10)),dk=(d=new Date())=>d.toLocaleDateString('sv');
 let showRk=false;
 function T(){const p=st.pf;if(!p||!p.w||!p.h||!p.age)return null;const bmr=10*p.w+6.25*p.h-5*p.age+(p.sx=='f'?-161:5),td=bmr*({s:1.2,l:1.375,m:1.55,a:1.725}[p.act]||1.375),kc=Math.max(Math.round((td+({gain:300,perte:-400,maintien:0}[effGoal(p)]||0))/10)*10,p.sx=='f'?1200:1500),pr=Math.round(Math.min(p.w,bmi(p)>=25?24.9*Math.pow(p.h/100,2)*1.1:p.w)*({gain:1.8,perte:2,maintien:1.6}[effGoal(p)]||1.8)),fa=Math.round(kc*.25/9);return{kc,pr,fa,ca:Math.max(0,Math.round((kc-pr*4-fa*9)/4)),wa:Math.round((p.w*35+(DAY[new Date().getDay()]?500:0))/50)*50}}
-function sp(){const g=i=>$('#'+i).value,w=+g('pw');st.pf={n:(g('pn')||'Blue').trim().slice(0,20),sx:g('ps'),age:+g('pa'),h:+g('ph'),w,g:g('pg'),act:g('pc')};if(w&&(!st.wt.length||st.wt[st.wt.length-1].w!=w))st.wt.push({d:Date.now(),w});save();toast('Profil enregistré');st.plan?render():go('b')}
+function sp(){const g=i=>$('#'+i).value,w=+g('pw');st.pf={n:(g('pn')||'Blue').trim().slice(0,20),sx:g('ps'),age:+g('pa'),h:+g('ph'),w,g:g('pg'),act:g('pc'),eq:g('pe')};if(w&&(!st.wt.length||st.wt[st.wt.length-1].w!=w))st.wt.push({d:Date.now(),w});save();toast('Profil enregistré');if(!st.plan)setDefault();go('h')}
 const FD=[];
 const dm=()=>st.ml[dk()]||[],sm=k=>dm().reduce((a,x)=>a+(x[k]||0),0);
 
@@ -287,63 +256,122 @@ if(q[4]&&bl&&v>bl[q[4]]){bl[q[4]]=v;initBase(bl,false);Object.assign(st.plan,mk(
 setTimeout(()=>toast(rec?'Record ! '+v+' '+q[5]+' (avant : '+(ref||'aucun')+'), +500 XP':v+' '+q[5]+', +300 XP'),2000)}
 function evoH(){const b0=st.b0,bl=st.plan&&st.plan.bl;if(!b0||!bl)return '';return `<h2>Ton évolution mesurée</h2><div class="card">${[['Pompes','pu'],['Tractions','pl'],['Squats','sq'],['Planche (s)','pk']].map(([n,k])=>{const d=bl[k]-b0[k];return `<div class="li"><span>${n}</span><span class="m">${b0[k]} → ${bl[k]} <b style="color:${d>0?'var(--ok)':'var(--m)'}">${d>0?'+':''}${d}</b></span></div>`}).join('')}<div class="m" style="margin-top:8px">Les quêtes secrètes des semaines 4, 8 et 12 et ton bilan de fin de cycle mettent ces chiffres à jour.</div></div>`}
 const ZL={pec:'Pectoraux',dos:'Dos',epa:'Épaules',bra:'Bras',jam:'Jambes',fes:'Fessiers',abs:'Abdos',car:'Cardio'},nzx=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-const LIB=`Pompes sur genoux|pec|1|aucun|Mets-toi sur les genoux, corps aligné des genoux à la tête;Descends la poitrine près du sol;Pousse sans creuser le dos (l'image montre la version mains surélevées, aussi plus facile)|Incline_Push-Up
+const LIB=`Pompes au mur|pec|1|aucun|Mains au mur à hauteur d'épaules;Corps droit, pieds loin du mur;Plie les coudes puis repousse|
+Pompes sur genoux|pec|1|aucun|Genoux au sol, corps aligné des genoux à la tête;Descends la poitrine près du sol;Pousse sans creuser le dos|Incline_Push-Up
 Pompes classiques|pec|2|aucun|Mains sous les épaules, corps gainé;Coudes à 45° du corps;Descends la poitrine près du sol et remonte|Pushups
-Pompes déclinées|pec|3|chaise|Pieds sur une chaise stable;Corps aligné, ventre serré;Descends en 3 secondes|Decline_Push-Up
+Pompes larges|pec|2|aucun|Mains plus larges que les épaules;Garde le corps droit;Descends jusqu'à frôler le sol|
+Pompes serrées|pec|2|aucun|Mains légèrement plus proches que les épaules;Coudes près du corps;Plus de travail pour les triceps|
+Pompes décalées|pec|3|aucun|Une main plus avancée que l'autre;Alterne les côtés à chaque série;Garde les hanches face au sol|
+Pompes spiderman|pec|3|aucun|Ramène un genou vers le coude en descendant;Alterne les côtés;Reste gainé|
+Pompes sur poings|pec|3|aucun|Poings serrés, poignets droits;Corps aligné;Descends sous contrôle|
+Pompes lentes|pec|3|aucun|Descends en 4 secondes;Pause d'une seconde en bas;Remonte sans à-coup|
+Pompes déclinées|pec|3|aucun|Pieds sur un support stable;Corps aligné, ventre serré;Descends en 3 secondes|Decline_Push-Up
+Pompes archer|pec|4|aucun|Mains très écartées;Un bras plié, l'autre tendu;Alterne les côtés, jamais à l'échec|
+Pompes pseudo-planche|pec|4|aucun|Mains vers les hanches;Penche les épaules en avant;Descends lentement|
+Pompes explosives|pec|4|aucun|Pousse fort pour décoller les mains;Réception douce;Arrête quand la vitesse baisse|Plyo_Push-up
+Pompes claquées|pec|5|aucun|Pousse très fort, tape des mains en l'air;Réception les coudes souples;Seulement si les pompes explosives sont maîtrisées|
+Pompes une main assistée|pec|5|aucun|Une main sur un appui haut;Jambes écartées pour l'équilibre;Corps sans rotation|
+Pompes une main|pec|5|aucun|Pieds écartés, corps gainé;Pas de rotation du bassin;Descends sous contrôle|
+Cercles de bras|epa|1|aucun|Bras tendus à l'horizontale;Petits puis grands cercles;Garde les épaules basses|
+Chien tête en bas|epa|1|aucun|Hanches hautes, bras et jambes tendus;Pousse le sol, talons vers le bas;Respire calmement|
+Pike push-ups|epa|3|aucun|Hanches hautes, tête vers le sol;Coudes qui fléchissent vers l'arrière;Pousse pour revenir à la position initiale|
+Pike push-ups lents|epa|3|aucun|Descends en 4 secondes;Hanches toujours hautes;Remonte sans élan|
+Planche touche-épaule|epa|3|aucun|Position de planche haute;Touche l'épaule opposée;Garde les hanches immobiles|
+Planche vers pike|epa|3|aucun|Pars de la planche haute;Lève les hanches en V inversé;Reviens en planche en contrôle|
+Marche de l'ours|epa|3|aucun|Mains et pieds au sol, genoux décollés;Avance en diagonale;Dos plat|
+Handstand contre le mur|epa|4|aucun|Mains à 20 cm du mur, monte les pieds;Corps aligné, bras verrouillés;Pousse fort dans le sol|
+Négatives handstand|epa|5|aucun|Monte contre le mur;Descends en 5 secondes, tête vers le sol;Remonte en poussant|
 Pompes diamant|bra|3|aucun|Mains rapprochées, pouces et index en losange;Coudes près du corps;Travaille surtout les triceps|Push-Ups_-_Close_Triceps_Position
-Pompes explosives|pec|3|aucun|Descends en contrôle puis pousse très fort;Les mains peuvent décoller;Arrête la série quand la vitesse baisse|Plyo_Push-up
-Pompes archer|pec|4|aucun|Un bras tendu sur le côté, l'autre fléchit;Garde les hanches face au sol;Alterne les côtés|
-Pompes pseudo-planche|pec|5|aucun|Mains près des hanches, doigts vers l'arrière;Penche les épaules en avant des mains;Progresse très lentement|
-Pike push-ups|epa|3|aucun|Hanches hautes, corps en V inversé;Descends la tête entre les mains;Pousse vers le haut|
-Négatives handstand|epa|5|mur|Pieds au mur;Descends lentement en 5 secondes;Remonte avec de l'aide|
-Élévations latérales|epa|1|sac ou bouteilles|Bras légèrement fléchis;Monte jusqu'à l'horizontale;Descends sans élan|
-Oiseau|epa|2|sac à dos|Penche-toi en avant, dos plat;Ouvre les bras en serrant les omoplates;Contrôle la descente|
-Dips|bra|3|support stable|Support très stable;Épaules basses, coudes vers l'arrière;Descends jusqu'à 90 degrés|Bench_Dips
-Curl biceps|bra|1|sac ou serviette|Coudes fixes le long du corps;Monte lentement;Contrôle la descente|
-Tractions pronation|dos|3|barre|Prise un peu plus large que les épaules;Tire les coudes vers les hanches;Descends bras tendus|Pullups
-Tractions lestées|dos|5|barre et sac|Sac à dos bien fixé;Même technique que sans charge;Reviens sans charge si la technique se dégrade|Weighted_Pull_Ups
-Tractions négatives|dos|2|barre|Monte avec un saut ou un appui;Descends en 5 secondes;Contrôle jusqu'en bas|
-Chin-ups|dos|3|barre|Paumes vers toi;Menton au-dessus de la barre;Descends lentement|Chin-Up
-Rowing inversé|dos|2|table solide|Table très stable;Corps gainé de la tête aux talons;Tire la poitrine vers la table|Inverted_Row
-Rowing serviette porte|dos|1|serviette et porte|Serviette autour d'une poignée, porte bien fermée;Penche-toi en arrière, corps droit;Tire en serrant les omoplates|Bodyweight_Mid_Row
-Dead hang|dos|2|barre|Suspension bras tendus;Épaules actives;Respire calmement|
-Squat poids du corps|jam|1|aucun|Pieds largeur d'épaules;Hanches en arrière, genoux dans l'axe des pieds;Talons au sol|Bodyweight_Squat
-Squat bulgare|jam|3|chaise|Pied arrière posé sur une chaise;Buste droit;Descends le genou arrière près du sol (l'image montre la fente sans appui)|Split_Squats
-Fentes arrière|jam|2|aucun|Recule un pied;Genou arrière près du sol;Pousse sur la jambe avant pour revenir|
-Pistol assisté|jam|5|appui|Tiens-toi à un appui;Descends sur une jambe;Jambe libre tendue devant|
-Squat sauté|jam|2|aucun|Descends puis saute en extension;Réception souple, genoux fléchis|Freehand_Jump_Squat
-Jump squat|jam|3|aucun|Descends puis saute le plus haut possible;Réception souple, genoux fléchis|Freehand_Jump_Squat
-Broad jump|jam|3|aucun|Balance les bras;Saute le plus loin possible;Réception stable sur deux pieds|Standing_Long_Jump
-Mollets une jambe|jam|2|marche|Sur le bord d'une marche;Monte sur la pointe du pied;Descends complètement|
-Soulevé roumain une jambe|fes|3|sac à dos|Jambe d'appui légèrement fléchie;Dos plat, hanche vers l'arrière;Reviens en serrant le fessier|
-Pont fessier une jambe|fes|2|aucun|Une jambe tendue en l'air;Pousse avec le talon d'appui;Hanches alignées en haut|Single_Leg_Glute_Bridge
-Pont fessier|fes|1|aucun|Dos au sol, pieds près des fesses;Pousse les hanches vers le haut;Serre les fessiers en haut|Butt_Lift_Bridge
-Planche|abs|1|aucun|Coudes sous les épaules;Corps aligné, ventre serré;Respire normalement|Plank
-Gainage latéral|abs|2|aucun|Coude sous l'épaule;Hanches hautes, corps aligné;Alterne les côtés|Side_Bridge
-Hollow body|abs|2|aucun|Bas du dos collé au sol;Bras et jambes tendus, légèrement décollés;Tiens la position|
-Relevés de jambes suspendus|abs|4|barre|Suspendu à la barre;Monte les jambes sans balancer;Descends en contrôle|Hanging_Leg_Raise
-Relevés de jambes|abs|2|aucun|Dos plaqué au sol;Jambes presque tendues;Descends sans poser les talons|Flat_Bench_Lying_Leg_Raise
-L-sit|abs|4|chaises|Appuie-toi sur deux supports;Bras tendus, épaules basses;Jambes tendues devant|
-Jumping jacks|car|1|aucun|Écarte bras et jambes en sautant;Réception douce;Rythme régulier|Star_Jump
-Montées de genoux|car|1|aucun|Genoux hauts, bras en rythme;Reste léger sur les appuis|
-Mountain climbers|car|2|aucun|Position de pompe;Genoux vers la poitrine en alternance;Hanches basses|Mountain_Climbers
-Burpees|car|3|aucun|Squat, mains au sol, jambes en arrière;Pompe facultative;Saute pour finir|`.split('\n').map(l=>{const a=l.split('|');return[a[0],a[1],+a[2],a[3],a[4],a[5]]});
+Pompes diamant sur genoux|bra|2|aucun|Genoux au sol;Mains en losange;Descends la poitrine vers les mains|
+Pompes coudes serrés|bra|2|aucun|Coudes collés au corps;Poitrine vers le sol;Remonte sans écarter les coudes|
+Planche haute-basse|bra|3|aucun|Passe de la planche sur les avant-bras à la planche haute;Alterne le bras de départ;Hanches stables|
+Curl isométrique|bra|1|aucun|Mains l'une contre l'autre;Tire fort pendant toute la durée;Garde les coudes près du corps|
+Superman|dos|1|aucun|Allonge-toi sur le ventre;Lève bras et jambes en même temps;Garde la nuque neutre|
+Superman alterné|dos|2|aucun|Lève un bras et la jambe opposée;Alterne lentement;Pas de balancement|
+Superman maintenu|dos|2|aucun|Bras et jambes décollés;Tiens la position;Serre les omoplates|
+Y-T-W|dos|2|aucun|Allongé sur le ventre, bras décollés;Enchaîne les positions Y, T et W;Serre les omoplates|
+Reverse snow angel|dos|2|aucun|Allongé sur le ventre, bras décollés;Balaie les bras de la hanche à la tête;Garde les bras hauts|
+Nage au sol|dos|2|aucun|Allongé sur le ventre;Bats les bras et les jambes en alternance;Reste gainé|
+Bird dog|dos|1|aucun|À quatre pattes, dos plat;Tends un bras et la jambe opposée;Garde le bassin stable|
+Extensions lombaires au sol|dos|1|aucun|Allongé sur le ventre, mains sous le front;Lève le buste doucement;Redescends sans te laisser tomber|
+Squat poids du corps|jam|1|aucun|Pieds largeur d'épaules;Hanches en arrière, dos droit;Pousse sur les talons pour remonter|Bodyweight_Squat
+Squat sumo|jam|1|aucun|Pieds écartés, pointes vers l'extérieur;Genoux dans l'axe des pieds;Descends en gardant le dos droit|
+Squats lents|jam|2|aucun|Descends en 3 secondes;Remonte sans verrouiller les genoux;Garde le dos droit|
+Squat avec pause|jam|2|aucun|Marque 2 secondes en bas;Garde les talons au sol;Remonte avec puissance|
+Squat isométrique au mur|jam|2|aucun|Dos au mur, cuisses parallèles au sol;Genoux au-dessus des chevilles;Tiens la position|
+Squats sautés|jam|3|aucun|Accroupis-toi, puis saute explosivement;Garde le dos droit;Réceptionne en douceur sur la pointe des pieds|
+Squats sautés groupés|jam|3|aucun|Saute et ramène les genoux vers la poitrine;Réception souple;Séries courtes|
+Squat sauté 180°|jam|4|aucun|Saute en tournant d'un demi-tour;Réception stable;Alterne le sens|
+Broad jump|jam|3|aucun|Saute le plus loin possible vers l'avant;Balance les bras;Réception genoux fléchis|Standing_Long_Jump
+Fentes sur place|jam|1|aucun|Un pied devant, un pied derrière;Descends à la verticale;Remonte en poussant sur le talon avant|
+Fentes arrière|jam|2|aucun|Fais un grand pas en arrière;Garde le buste droit;Reviens et alterne les jambes|
+Fentes avant|jam|2|aucun|Grand pas en avant;Genou avant au-dessus du pied;Pousse pour revenir|
+Fentes latérales|jam|2|aucun|Grand pas sur le côté;Fléchis une jambe, l'autre reste tendue;Garde les pieds à plat|
+Fentes marchées|jam|2|aucun|Avance en alternant les jambes;Buste droit;Genou arrière près du sol|
+Fentes sautées|jam|3|aucun|Alterne les jambes en l'air;Réception contrôlée;Garde le buste droit|
+Squat cosaque|jam|3|aucun|Grand écart latéral, fléchis une jambe;Talon au sol;Alterne les côtés|
+Pistol squat assisté|jam|4|aucun|Une main au mur pour l'équilibre;Descends sur une jambe;Remonte sans élan|
+Pistol squat|jam|5|aucun|Une jambe tendue devant;Descends lentement, talon au sol;Remonte en poussant|
+Squat shrimp|jam|5|aucun|Tiens le pied arrière;Descends jusqu'à effleurer le sol;Garde le buste droit|
+Mollets debout|jam|1|aucun|Monte sur la pointe des pieds;Pause en haut;Descends lentement|
+Mollets une jambe|jam|2|aucun|Une main au mur pour l'équilibre;Monte le plus haut possible;Descends en 3 secondes|
+Pont fessier|fes|1|aucun|Genoux fléchis, pieds à plat;Pousse sur les talons, lève le bassin;Contracte les fessiers en haut|Butt_Lift_Bridge
+Pont fessier avec pause|fes|1|aucun|Monte et tiens 2 secondes;Contracte fort les fessiers;Redescends doucement|
+Pont fessier une jambe|fes|2|aucun|Une jambe tendue en l'air;Bassin à l'horizontale;Pousse sur le talon d'appui|Single_Leg_Glute_Bridge
+Pont fessier marche|fes|3|aucun|Bassin haut, pieds qui avancent à tour de rôle;Hanches stables;Garde les fessiers contractés|
+Donkey kicks|fes|1|aucun|À quatre pattes, dos plat;Pousse le talon vers le plafond;Ne cambre pas|
+Fire hydrants|fes|1|aucun|À quatre pattes;Lève le genou sur le côté;Bassin immobile|
+Clam shells|fes|1|aucun|Allongé sur le côté, genoux fléchis;Ouvre le genou du dessus;Pieds restent collés|
+Soulevé roumain une jambe|fes|3|aucun|Penche le buste, jambe libre vers l'arrière;Dos plat;Remonte en contractant les fessiers|
+Good morning|fes|1|aucun|Mains derrière la tête;Penche le buste hanches en arrière;Dos plat|
+Extension de hanche à quatre pattes|fes|1|aucun|Jambe tendue vers l'arrière;Monte sans cambrer;Contracte les fessiers|
+Planche|abs|1|aucun|Avant-bras au sol, corps aligné;Ne creuse pas le dos;Respire calmement|Plank
+Planche sur les genoux|abs|1|aucun|Genoux au sol, corps aligné;Contracte les abdos;Regarde le sol|
+Planche haute|abs|2|aucun|Bras tendus sous les épaules;Corps droit;Contracte abdos et fessiers|
+Gainage latéral|abs|2|aucun|Appui sur l'avant-bras;Hanches hautes, corps aligné;Change de côté|Side_Bridge
+Gainage latéral sur les genoux|abs|1|aucun|Genoux fléchis;Hanches levées;Corps aligné|
+Hollow body|abs|2|aucun|Lombaires au sol, bras et jambes tendus;Garde le ventre contracté;Plus les jambes sont basses, plus c'est dur|
+Hollow rocks|abs|3|aucun|Position hollow body;Balance doucement d'avant en arrière;Reste gainé|
+Relevés de jambes|abs|2|aucun|Allongé, jambes tendues;Lève jusqu'à la verticale;Descends sans toucher le sol|Flat_Bench_Lying_Leg_Raise
+Crunch|abs|1|aucun|Mains derrière la tête;Enroule le buste;Descends lentement|
+Crunch bicyclette|abs|2|aucun|Coude vers le genou opposé;Alterne lentement;Garde le bas du dos au sol|
+Russian twist|abs|2|aucun|Assis, buste incliné;Tourne le buste de chaque côté;Pieds décollés pour plus de difficulté|
+Dead bug|abs|1|aucun|Allongé, bras et jambes en l'air;Tends bras et jambe opposés;Bas du dos collé au sol|
+Planche lever de jambe|abs|3|aucun|Planche stable;Lève une jambe puis l'autre;Hanches immobiles|
+V-ups|abs|3|aucun|Allongé, bras et jambes tendus;Touche tes pieds en pliant le buste;Redescends lentement|
+L-sit au sol|abs|4|aucun|Assis, mains au sol;Décolle les fesses;Jambes tendues devant|
+Ciseaux|abs|2|aucun|Jambes tendues au-dessus du sol;Croise-les en alternance;Bas du dos collé|
+Toucher de talons|abs|1|aucun|Allongé, genoux fléchis;Touche chaque talon avec la main;Garde les épaules décollées|
+Jumping jacks|car|1|aucun|Saute en écartant bras et jambes;Rythme régulier;Réception souple|Star_Jump
+Montées de genoux|car|1|aucun|Monte les genoux à hauteur de hanches;Bras qui accompagnent;Reste sur la pointe des pieds|
+Talons-fesses|car|1|aucun|Ramène les talons vers les fesses;Buste droit;Rythme soutenu|
+Mountain climbers|car|2|aucun|Position de planche haute;Ramène les genoux vers la poitrine en alternance;Hanches basses|Mountain_Climbers
+Burpees sans saut|car|3|aucun|Descends en planche;Reviens debout sans sauter;Enchaîne sans pause|
+Burpees|car|4|aucun|Planche puis saut vertical;Réception souple;Respire régulièrement|
+Boxe dans le vide|car|1|aucun|Frappe en alternant les bras;Garde les poings près du visage;Reste mobile|
+Pas chassés|car|1|aucun|Déplace-toi de côté en gardant les genoux fléchis;Change de direction;Reste bas|
+Patineur|car|2|aucun|Saute d'un pied à l'autre sur le côté;Balance les bras;Réception stable|
+Sprint sur place|car|2|aucun|Cours le plus vite possible sur place;Genoux hauts;Bras actifs|
+Marche rapide sur place|car|1|aucun|Marche vite en balançant les bras;Genoux à hauteur moyenne;Respire par le nez|
+Étoiles|car|3|aucun|Saute en écartant bras et jambes en étoile;Réception contrôlée;Rythme régulier|
+Tuck jumps|car|4|aucun|Saute et ramène les genoux vers la poitrine;Réception douce;Séries courtes|
+Burpee pompe|car|5|aucun|Descends en pompe complète;Remonte et saute;Garde un rythme régulier|`.split('\n').map(l=>{const a=l.split('|');return[a[0],a[1],+a[2],a[3],a[4],a[5]]});
 let XQ='',XZ='all';
 const demo=id=>`<div class="demo">${[0,1].map(f=>`<img src="ex/${id}_${f}.jpg" loading="lazy" alt="">`).join('')}</div>`,demoFor0=n=>{const e=LIB.find(x=>x[5]&&nzx(n).startsWith(nzx(x[0])));return e?`<div class="demo sm">${[0,1].map(f=>`<img src="ex/${e[5]}_${f}.jpg" alt="">`).join('')}</div>`:''};
 const xlist=()=>{const q=nzx(XQ),a=LIB.filter(e=>(XZ=='all'||e[1]==XZ)&&(nzx(e[0]).includes(q)||nzx(ZL[e[1]]).includes(q)));return a.map(e=>`<details class="card"><summary><span><b>${e[0]}</b><div class="m">${ZL[e[1]]}, ${e[3]}</div></span><span class="m">${'●'.repeat(e[2])}${'○'.repeat(5-e[2])}</span></summary>${fxk(e[0])?fiche(fxk(e[0])):`${e[5]?demo(e[5]):'<div class="m" style="margin-top:8px">Démonstration à venir.</div>'}<ul class="tps">${e[4].split(';').map(t=>`<li>${t}</li>`).join('')}</ul>`}</details>`).join('')||'<div class="m">Aucun exercice trouvé.</div>'},xr=()=>{$('#xl').innerHTML=xlist()};
 V.x=()=>`<button class="btn g s" onclick="go('p')">Retour</button><h1 style="margin-top:12px">Exercices</h1><div class="m">${LIB.length} exercices avec conseils d'exécution et démonstrations. Niveau de 1 à 5.</div><input id="xq" type="text" placeholder="Rechercher : pompes, dos, abdos…" value="${XQ}" oninput="XQ=this.value;xr()" style="margin:12px 0 10px"><div class="chs">${[['all','Tous'],...Object.entries(ZL)].map(([c,n])=>`<button class="ch ${XZ==c?'on':''}" onclick="XZ='${c}';render()">${n}</button>`).join('')}</div><div id="xl">${xlist()}</div>`;
-function mkS(k,sl,b,L0,ad){const g=effGoal(st.pf||{}),bm=bmi(st.pf),lowI=bm>=30,zp=ZN[b.zn||'all']||[];sl=sl.map(p=>lowI&&({expL:'hinge',expP:'tri',expPull:'bi'})[p]||p);if(g=='perte'&&sl.length>3)sl=bm>=25&&sl.length>6?[...sl.slice(0,-2),'cardio2','cardio']:[...sl.slice(0,-1),'cardio'];
+function mkS(k,sl,b,L0,ad){const g=effGoal(st.pf||{}),bm=bmi(st.pf),lowI=bm>=30,zp=ZN[b.zn||'all']||[];sl=sl.map(p=>(lowI||g=='perte')&&({expL:'hinge',expP:'tri',expPull:'bi'})[p]||p);if(g=='perte'&&sl.length>3)sl=bm>=25&&sl.length>6?[...sl.slice(0,-2),'cardio2','cardio']:[...sl.slice(0,-1),'cardio'];
 const it=sl.map(p=>{const lev=L0[BM[p]]+(ad[p]||0),tb=p=='pull'?(b.bar?'pullB':'pullN'):(lowI&&/^cardio/.test(p)?p+'L':p),i=p=='expPull'&&!b.bar?0:Math.max(0,Math.min(4,lev+(p=='vp'?-1:0)-1)),V=PT[tb][Math.min(i,PT[tb].length-1)],ex=/^exp|cardio/.test(p);let r=V[1];if(g=='perte'&&!ex&&!/ s$/.test(r))r=r.split('-').map((n,j)=>+n+(j?3:2)).join('-');
 return [V[0],(lev<=2?[2,3,3]:[3,4,4]).map(x=>zp.includes(p)?Math.min(5,x+1):x),r,V[2]?' '+V[2]:'',/^cardio/.test(p)?30:/^core/.test(p)?45:/^(bi|tri|vp|calf)/.test(p)?60:90,'',TP[p],p]});
 for(let i=0;i+1<it.length;i+=2){const n='S'+(i/2+1);it[i][5]=it[i+1][5]=n;it[i+1][4]=Math.max(it[i][4],it[i+1][4]);it[i][4]=0}
 const z=[...new Set(sl.flatMap(p=>STR[p]||[]))].slice(0,6);return{n:SN[k],min:Math.round(7+it.reduce((a,x)=>a+x[1][1]*(38+(x[4]||20)),0)/60),x:it,st:z.length?z:['Cobra 30 s']}}
 function ordZ(sl,b){const zp=ZN[b.zn||'all']||[];if(!zp.length)return sl;const pr=sl.filter(p=>zp.includes(p)),miss=zp.filter(p=>!sl.includes(p)).slice(0,Math.max(0,2-pr.length));return[...pr,...miss,...sl.filter(p=>!zp.includes(p))]}
-function mk(b,ad){const days=[...b.days].sort((x,y)=>(x+6)%7-(y+6)%7),L0=lvls(b),sess={},keys=[...PLN[days.length]];if(effGoal(st.pf||{})=='perte'&&keys.length>=3)keys[keys.length==4?3:2]='CD';keys.forEach((k,i)=>{let o;for(let n=SZ[b.dur];n>=3;n--){o=mkS(k,(k=='CD'?SPL[k]:ordZ(SPL[k],b)).slice(0,n),b,L0,ad);if(o.min<=b.dur)break}sess['ABCDE'[i]]=o});return{sess,days}}
+function mk(b,ad){const days=[...b.days].sort((x,y)=>(x+6)%7-(y+6)%7),L0=lvls(b),sess={},keys=[...PLN[days.length]];if(effGoal(st.pf||{})=='perte'&&keys.length>=3)keys[keys.length==4?3:2]='CD';keys.forEach((k,i)=>{let o;if(k=='CD')o=cardioSess();else for(let n=SZ[b.dur];n>=3;n--){o=mkS(k,ordZ(SPL[k],b).slice(0,n),b,L0,ad);if(o.min<=b.dur)break}sess['ABCDE'[i]]=o});return{sess,days}}
 function setDay(){DAY={};st.plan.days.forEach((d,i)=>DAY[d]='ABCDE'[i])}
 function gp(){const g=i=>+$('#'+i).value,days=[1,2,3,4,5,6,0].filter(d=>$('#d'+d).checked);if(days.length<2||days.length>5)return toast('Choisis entre 2 et 5 jours');
 const nb={days,dur:g('qd'),bar:$('#qb').value=='1',pu:g('qu'),pl:g('qp'),sq:g('qs'),pk:g('qk'),qj:g('qj'),zn:$('#qz').value},old=st.plan&&st.plan.bl,end=st.plan&&wr()>12,f=n=>(n>=0?'+':'')+n;
 if(end){(st.hist=st.hist||[]).push({cy:st.cy||1,old,nw:nb,d:Date.now()});st.cy=(st.cy||1)+1}else if(!st.plan)st.cy=1;
-if(!st.plan||end){st.start=dk();st.done={}}
+if(!st.plan||end){st.start=dk();st.done={};st.pn=null}
 const first=!st.plan;st.plan=Object.assign({bl:nb,ad:{}},mk(nb,{}));initBase(nb,first);P=st.plan.sess;setDay();st.lw=wk();st.vf=1;st.nw=[];save();toast(end?'Bilan : pompes '+f(nb.pu-old.pu)+', tractions '+f(nb.pl-old.pl)+', squats '+f(nb.sq-old.sq):'Programme généré. Rang de départ : '+RK[rk(lv(st.xp))]);go('h')}
 function adapt(){if(!st.plan||st.lw>=wk()||wr()>12)return;const pw0=st.lw,L=st.logs.filter(l=>l.d>=new Date(st.start)&&l.w==pw0),pl2={},nm={},old={};
 Object.values(P).forEach(s=>s.x.forEach(x=>{nm[x[0]]=[x[7],x[2].split('-').map(Number)];old[x[7]]=x[0]}));
@@ -352,7 +380,7 @@ const ad=st.plan.ad;Object.entries(pl2).forEach(([p,a])=>{if(a.length<3)return;c
 st.vf=Object.keys(P).filter(k=>st.done[pw0+'-'+k]).length<Math.ceil(Object.keys(P).length/2)?.8:1;
 Object.assign(st.plan,mk(st.plan.bl,ad));P=st.plan.sess;const news=[];Object.values(P).forEach(s=>s.x.forEach(x=>{if(old[x[7]]&&old[x[7]]!=x[0]&&!news.some(n=>n.endsWith(x[0])))news.push(old[x[7]]+' → '+x[0])}));
 if(st.vf<1)news.push('Peu de séances la semaine dernière : volume réduit de 20 % cette semaine.');st.nw=news;st.lw=wk();save()}
-function bn(){let h='';{const td=DAY[new Date().getDay()],qi=td?qsIdx(wk(),td):null;if(qi!==null&&!st.done[wk()+'-'+td])h+=`<div class="card" style="border-color:#c084fc"><b>Quête secrète débloquée</b><div class="m">Aujourd\'hui, le coach remplace ta séance par une épreuve spéciale.</div></div>`}if(!st.plan)h+=`<div class="card" onclick="go('b')"><b>Génère ton programme personnalisé</b><div class="m">Dis au coach ton niveau et tes disponibilités.</div></div>`;else if(wr()>12)h+=`<div class="card" onclick="go('b')" style="border-color:var(--a2)"><b>Cycle terminé ! Fais ton bilan</b><div class="m">Le coach génère ton prochain programme.</div></div>`;
+function bn(){let h='';{const td=DAY[new Date().getDay()],qi=td?qsIdx(wk(),td):null;if(qi!==null&&!st.done[wk()+'-'+td])h+=`<div class="card" style="border-color:#c084fc"><b>Quête secrète débloquée</b><div class="m">Aujourd\'hui, le coach remplace ta séance par une épreuve spéciale.</div></div>`}if(!st.plan)h+=`<div class="card" onclick="go('b')"><b>Personnalise ton programme avec le coach</b><div class="m">Optionnel : le coach adapte les séances à ton niveau et à tes jours.</div></div>`;else if(wr()>12)h+=`<div class="card" onclick="go('b')" style="border-color:var(--a2)"><b>Cycle terminé ! Fais ton bilan</b><div class="m">Le coach génère ton prochain programme.</div></div>`;
 if(st.nw&&st.nw.length)h+=`<div class="card"><b>Le coach a adapté ton programme</b>${st.nw.map(x=>`<div class="m">${x}</div>`).join('')}<button class="btn g s" style="margin-top:8px" onclick="st.nw=[];save();render()">OK</button></div>`;return h}
 const rmc=()=>`<h2>Rappels</h2><div class="card"><div class="m">Heure du rappel</div><input type="time" id="rt" value="${(st.rm&&st.rm.t)||'18:00'}"><div class="fg"><button class="btn g s" onclick="rmN()">Notifications</button><button class="btn s" onclick="ics()">Calendrier</button></div><div class="m">Les notifications marchent quand l'app est ouverte ou en arrière-plan. Pour être sûr d'être rappelé, ajoute tes séances et tes rappels d'eau au calendrier : il sonne même app fermée.</div></div>`;
 async function rmN(){const t=$('#rt').value;st.rm={t,on:1};save();if(!('Notification'in window))return toast('Notifications non prises en charge');const p=await Notification.requestPermission();toast(p=='granted'?'Notifications activées à '+t:'Autorisation refusée');schedRm()}
@@ -360,9 +388,45 @@ function schedRm(){clearTimeout(window._rt);if(!st.rm||!st.rm.on||!('Notificatio
 window._rt=setTimeout(()=>{const k=DAY[t.getDay()],o={body:'Séance '+P[k].n+' : '+P[k].min+' min. Allez, '+((st.pf&&st.pf.n)||'Blue')+' !',icon:'icon-192.png'};navigator.serviceWorker&&navigator.serviceWorker.ready.then(r=>r.showNotification('FitBlue',o)).catch(()=>new Notification('FitBlue',o));schedRm()},Math.min(t-n,2e9))}
 function ics(){const[h,m]=($('#rt').value||'18:00').split(':'),BY=['SU','MO','TU','WE','TH','FR','SA'],z=n=>String(n).padStart(2,'0'),nd=w=>{const d=new Date();while(d.getDay()!=w)d.setDate(d.getDate()+1);return d},
 ev=(s,d,hh,mm,du,r)=>['BEGIN:VEVENT','UID:'+Math.random().toString(36).slice(2)+'@fitblue','DTSTAMP:'+dk().replace(/-/g,'')+'T000000Z','DTSTART:'+dk(d).replace(/-/g,'')+'T'+z(hh)+z(mm)+'00','DURATION:PT'+du+'M','RRULE:'+r,'SUMMARY:'+s,'BEGIN:VALARM','TRIGGER:-PT10M','ACTION:DISPLAY','DESCRIPTION:'+s,'END:VALARM','END:VEVENT'],L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//FitBlue//FR'];
-Object.entries(DAY).forEach(([w,k])=>L.push(...ev('FitBlue : séance '+P[k].n,nd(+w),h,m,P[k].min,'FREQ=WEEKLY;BYDAY='+BY[w])));[10,14,17].forEach(x=>L.push(...ev('FitBlue : bois un verre d\'eau',new Date(),x,0,5,'FREQ=DAILY')));L.push('END:VCALENDAR');
+Object.entries(DAY).forEach(([w,k])=>L.push(...ev('FitBlue : séance '+P[k].n,nd(+w),h,m,P[k].min,'FREQ=WEEKLY;BYDAY='+BY[w])));[10,14,17].forEach(x=>L.push(...ev('FitBlue : bois un verre d\'eau',new Date(),x,0,5,'FREQ=DAILY')));if(effGoal(st.pf||{})=='perte')[0,1,2,3,4,5,6].filter(w=>!DAY[w]).forEach(w=>{const e=ev('FitBlue : marche du jour',nd(w),h,m,40,'FREQ=WEEKLY;BYDAY='+BY[w]);e.splice(e.length-1,0,'BEGIN:VALARM','TRIGGER:PT30M','ACTION:DISPLAY','DESCRIPTION:Valide ta marche dans FitBlue','END:VALARM','BEGIN:VALARM','TRIGGER:PT90M','ACTION:DISPLAY','DESCRIPTION:Valide ta marche dans FitBlue','END:VALARM');L.push(...e)});L.push('END:VCALENDAR');
 const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.join('\r\n')],{type:'text/calendar'}));a.download='fitblue-rappels.ics';a.click()}
-if(st.plan){P=st.plan.sess;setDay()}adapt();schedRm();
+/* ---------- programme par défaut FitBlue (affiche) avec progression ---------- */
+st.pg=st.pg||{};
+const fm=v=>v>=100?Math.floor(v/60)+':'+String(v%60).padStart(2,'0'):v;
+const DPS=[
+{id:'sq',s:3,m:5,rt:90,v:[['Squats sautés',5,10,'r','','Accroupis-toi, puis saute explosivement. Garde le dos droit et réceptionne en douceur.',''],['Squats sautés groupés',5,10,'r','','Ramène les genoux vers la poitrine en l\'air.',''],['Squat sauté 180°',4,8,'r','','Demi-tour en l\'air, réception stable.','']],alt:[['Squats lents',12,20,'r','','Descends en 3 secondes, remonte sans verrouiller les genoux.',''],['Squat avec pause',10,16,'r','','Marque 2 secondes en bas, talons au sol.',''],['Squat cosaque',8,14,'r',' /côté','Un côté puis l\'autre, talon au sol.','']]},
+{id:'de',s:3,m:5,rt:90,v:[['Pompes déclinées',8,15,'r','','Pieds surélevés, corps bien gainé. Descends jusqu\'à frôler le sol, puis remonte.','de'],['Pompes déclinées pieds hauts',8,15,'r','','Pieds plus hauts, corps aligné.','de'],['Pompes pseudo-planche',5,10,'r','','Mains vers les hanches, épaules en avant.','']]},
+{id:'ro',s:4,m:6,rt:90,v:[['Rowing sac à dos',8,15,'r','','Penche-toi légèrement, dos droit. Tire le sac vers ton ventre, serre bien les omoplates.','ro'],['Rowing sac à dos une main',8,15,'r',' /côté','Un bras à la fois, buste stable.','ro']],alt:[['Nage au sol',10,20,'r','','Allongé sur le ventre, bats bras et jambes en alternance.',''],['Reverse snow angel',10,20,'r','','Balaie les bras de la hanche à la tête.','']],sac:1},
+{id:'fe',s:3,m:5,rt:90,v:[['Fentes arrière',10,18,'r',' /jambe','Fais un grand pas en arrière, garde le buste droit. Reviens et alterne les jambes.','fe'],['Fentes marchées',10,18,'r',' /jambe','Avance en alternant, buste droit.',''],['Fentes sautées',6,12,'r',' /jambe','Alterne les jambes en l\'air, réception contrôlée.',''],['Pistol squat assisté',3,8,'r',' /jambe','Une main au mur pour t\'aider.','']]},
+{id:'pi',s:3,m:5,rt:90,v:[['Pike push-ups',6,12,'r','','Hanches hautes, tête vers le sol. Pousse pour revenir à la position initiale.','pi'],['Pike push-ups lents',6,12,'r','','Descends en 4 secondes.',''],['Handstand contre le mur',15,45,'s','','Pousse dans le sol, corps aligné, pieds au mur.','']]},
+{id:'ad',s:3,m:5,rt:90,v:[['Pompes diamant',8,15,'r','','Mains rapprochées en forme de diamant, coudes près du corps.','diamant'],['Pompes archer',5,10,'r',' /côté','Un bras tendu, un bras plié. Alterne les côtés.','archer'],['Pompes archer profondes',5,10,'r',' /côté','Descends plus bas sur le bras plié.','archer']]},
+{id:'cu',s:3,m:5,rt:90,v:[['Curl biceps sac',8,15,'r','','Tiens le sac, coudes près du corps. Monte et redescends lentement.','cu'],['Curl biceps sac une main',8,15,'r',' /bras','Un bras à la fois.','cu']],alt:[['Curl isométrique',20,40,'s','','Mains l\'une contre l\'autre, tire fort pendant toute la durée.',''],['Pompes coudes serrés',8,15,'r','','Coudes collés au corps.','']],sac:1},
+{id:'ho',s:3,m:5,rt:90,v:[['Hollow body',20,45,'s','','Lombaires au sol, bras et jambes tendus. Garde le ventre contracté.','ho'],['Hollow rocks',20,45,'s','','Balance doucement d\'avant en arrière.','ho'],['V-ups',8,15,'r','','Touche tes pieds en pliant le buste.','']]},
+{id:'pl',s:3,m:5,rt:90,v:[['Planche',30,60,'s','','Corps bien aligné, ne creuse pas le dos. Reste stable et respire.','pl'],['Planche touche-épaule',30,60,'s','','Touche l\'épaule opposée sans bouger les hanches.','pl'],['Planche lever de jambe',30,60,'s','','Lève une jambe puis l\'autre.','pl']]},
+{id:'su',s:3,m:5,rt:90,v:[['Superman',20,40,'s','','Allonge-toi sur le ventre, lève bras et jambes. Garde la nuque neutre.','super'],['Y-T-W',20,40,'s','','Enchaîne les positions Y, T, W, bras décollés.','ytw'],['Superman alterné',10,20,'r','','Lève un bras et la jambe opposée en alternance.','']]}];
+const CDS={id:'cd',s:3,m:5,v:[['',30,60,'s']]},STR6=['Ischio-jambiers 30 s/côté','Quadriceps 30 s/côté','Mollets 30 s/côté','Dos (position de l\'enfant) 30 s','Épaules 30 s/côté','Pectoraux (mur) 30 s'];
+function dpChain(sl){const p=st.pf||{},eq=p.eq||'sac';return(sl.id=='sq'&&(effGoal(p)=='perte'||bmi(p)>=30)&&sl.alt)||(sl.sac&&eq=='aucun'&&sl.alt)||sl.v}
+function dpG(sl){const ch=dpChain(sl),k=ch===sl.v?0:1;let g=st.pg[sl.id];if(!g||g.k!=k)g=st.pg[sl.id]={v:0,r:ch[0][1],s:sl.s,k};g.v=Math.min(g.v,ch.length-1);return[g,ch[g.v]]}
+function dpItems(){return DPS.map(sl=>{const[g,v]=dpG(sl);return[v[0],[g.s,g.s,g.s],v[3]=='s'?g.r+' s':''+g.r,v[4],sl.rt,'',v[5],'dp:'+sl.id,v[6]||'']})}
+function cardioSess(){const low=bmi(st.pf)>=30,g=st.pg.cd||{r:30,s:3},r=st.plan?40:g.r,n=st.plan?3:g.s,L=low?['Marche rapide sur place','Montées de genoux','Boxe dans le vide','Pas chassés','Mountain climbers','Squats lents','Fentes marchées']:['Montées de genoux','Boxe dans le vide','Pas chassés','Mountain climbers','Patineur','Squats rapides','Burpees sans saut','Sprint sur place'];
+return{n:'Cardio et condition',min:Math.round(7+L.length*n*(r+20)/60),sd:30,x:L.map(x=>[x,[n,n,n],r+' s','',20,'','Rythme soutenu, respire sans t\'arrêter.','cd','']),st:STR6}}
+function dpAll(){const it=dpItems(),mn=Math.round(7+it.reduce((a,x)=>a+x[1][0]*(38+x[4]),0)/60),b={n:'Programme FitBlue',min:mn,sd:30,x:it,st:STR6};return{A:b,B:Object.assign({},b),C:effGoal(st.pf||{})=='perte'?cardioSess():Object.assign({},b)}}
+function setDefault(){P=dpAll()}
+function dpAdv(sl,ch){const g=st.pg[sl.id],v=ch[g.v];if(g.r<v[2])g.r++;else if(g.s<sl.m){g.s++;g.r=Math.min(v[2],v[1]+2)}else if(g.v<ch.length-1){g.v++;g.s=sl.s;g.r=ch[g.v][1]}}
+function dpProg(k,e){const n=[];P[k].x.forEach(x=>{const id=(x[7]||'').replace('dp:',''),sl=id=='cd'?CDS:DPS.find(d=>d.id==id),a=e[x[0]];if(!sl||!a||a.length<x[1][0])return;const t=parseInt(x[2]);if(a.reduce((s,y)=>s+y.r,0)/a.length<t-1)return;
+if(id=='cd'){const g=st.pg.cd||(st.pg.cd={r:30,s:3});if(g.r<60)g.r++;else if(g.s<5){g.s++;g.r=32}if(!n.length)n.push('Cardio : '+g.r+' s, '+g.s+' séries');return}
+const ch=dpChain(sl);dpAdv(sl,ch);const g=st.pg[sl.id];n.push(ch[g.v][0]+' : '+g.s+' × '+g.r+(ch[g.v][3]=='s'?' s':''))});if(n.length)st.nw=['Progression : '+n.slice(0,4).join(' | ')+(n.length>4?' …':'')];save()}
+/* ---------- marche des jours de repos (perte de poids) ---------- */
+const stepGoal=()=>Math.min(10000,(bmi(st.pf)>=30?6000:8000)+Math.floor((wr()-1)/2)*250);
+function wkc(){const p=st.pf;if(!p||effGoal(p)!='perte'||DAY[new Date().getDay()])return '';const k=dk(),g=stepGoal(),v=st.wk2&&st.wk2[k],sp=(st.stp||{})[k]||'',mn=Math.min(60,30+Math.floor((wr()-1)/2)*5);
+return `<div class="card" style="border-color:#2dd4a0"><div style="display:flex;justify-content:space-between"><b>Marche du jour</b><span class="m">Jour de repos</span></div><div class="m">${mn} min de marche rapide, objectif ${g.toLocaleString('fr-FR')} pas.</div>${v?'<div class="m" style="margin-top:8px">Marche validée ✅</div>':`<button class="btn" style="margin-top:10px" onclick="goWalk(${mn})">Démarrer la marche</button><div class="fg" style="margin-top:10px"><input id="stp" type="number" inputmode="numeric" placeholder="Pas du jour" value="${sp}"><button class="btn g s" onclick="stpOk()">Valider mes pas</button></div>`}<div class="m" style="margin-top:8px">Pas saisis à la main. Health Connect demande une version Android native.</div></div>`}
+function goWalk(mn){pl={k:'M',w:wk(),S:[{t:'p',n:'Prêt ?',d:5,sub:'La marche démarre'},{t:'w',n:'Marche rapide',d:mn*60,sub:'Marche du jour',tip:'Rythme soutenu : tu dois pouvoir parler, mais pas chanter.'}],i:0,e:{},c:0,t0:Date.now()};try{navigator.wakeLock.request('screen').then(l=>pl.wl=l)}catch(e){}enter()}
+function stpOk(){const n=+$('#stp').value,k=dk();if(!n)return toast('Indique tes pas');(st.stp=st.stp||{})[k]=n;if(n>=stepGoal()){(st.wk2=st.wk2||{})[k]=1;st.xp+=30;toast('Objectif atteint, +30 XP')}else toast(n+' pas enregistrés, encore '+(stepGoal()-n)+' pour valider');save();render()}
+function schedWalk(){clearInterval(window._wi);window._wi=setInterval(()=>{const p=st.pf;if(!p||effGoal(p)!='perte'||DAY[new Date().getDay()]||!('Notification'in window)||Notification.permission!='granted')return;if(st.wk2&&st.wk2[dk()])return;const h=new Date().getHours();if(h<9||h>20||Date.now()-(st.wn||0)<45*6e4)return;st.wn=Date.now();save();const o={body:'Ta marche du jour t\'attend : valide-la pour continuer ta progression.',icon:'icon-192.png'};navigator.serviceWorker&&navigator.serviceWorker.ready.then(r=>r.showNotification('FitBlue',o)).catch(()=>new Notification('FitBlue',o))},6e4)}
+/* ---------- XP perdus quand on manque des séances ---------- */
+function xpPen(){if(st.pn==null){st.pn=wr();save();return}const q=Object.keys(DAY).length,n=wr();if(n<=st.pn)return;let pen=0;for(let w=st.pn;w<n;w++){const a=new Date(st.start).getTime()+(w-1)*6048e5,d=new Set(st.logs.filter(l=>l.d>=a&&l.d<a+6048e5&&l.c>0).map(l=>dk(new Date(l.d)))).size;pen+=Math.max(0,q-d)*60}
+st.pn=n;if(pen){const f=xl(rk(lv(st.xp))*10+1),o=st.xp;st.xp=Math.max(f,st.xp-pen);if(o>st.xp)(st.nw=st.nw||[]).push('Séances manquées : −'+(o-st.xp)+' XP. Reprends le rythme pour les regagner.')}save()}
+if(st.plan){P=st.plan.sess;setDay()}else setDefault();adapt();xpPen();schedRm();schedWalk();
 /* ---------- quêtes, série, défis du coach, badges, nutrition évoluée ---------- */
 st.pdc=st.pdc||{};st.sl=st.sl||{};st.qa=st.qa||{};st.sh=st.sh||{};st.rc=st.rc||[];st.bd=st.bd||[];
 const act=d=>st.logs.some(l=>dk(new Date(l.d))==d)||(st.ml[d]||[]).length>=2;
@@ -450,6 +514,6 @@ function fiche(k){const f=FCH[k];return `<div class="fch"><div class="fh"><span 
 <b>Variantes</b><div class="vr">${f.vars.map((v,i)=>`<div class="vc">${f.vi?`<img src="fx/${k}_v${i+1}.webp" alt="">`:''}<b>${v[0]}</b><div class="m">${v[1]}</div><div class="m">${v[2]}</div></div>`).join('')}</div>
 <b>Séries et répétitions</b><div class="m">${f.sr}</div><b>Objectifs</b>${f.obj.map(x=>`<div class="li2">✓ ${x}</div>`).join('')}<b>Progression</b>${f.pr.map(x=>`<div class="li"><span>${x[0]}</span><span class="m">${x[1]}</span></div>`).join('')}</div>`}
 setInterval(()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;document.querySelectorAll('.fxa').forEach(e=>{const n=e.children.length,i=((+e.dataset.i||0)+1)%n;e.dataset.i=i;[...e.children].forEach((c,j)=>c.classList.toggle('on',j==i))})},750);
-function demoFor(n){const k=fxk(n);return k?fxa(k,1):demoFor0(n)}
+function demoFor(n){if(!n)return '';const k=fxk(n);return k?fxa(k,1):demoFor0(n)}
 lt().then(render);render();
 </script></body></html>
