@@ -147,13 +147,13 @@ n.st.forEach(z=>{const m=z.match(/^(.*) (\d+) s(\/côté)?$/);(m[3]?['gauche','d
 function go2(){const{k,w}=ses,q=ses.q;ses=null;if(q!==undefined){const keep=P;P=Object.assign({},P,{Q:qSess(q)});const S=build('Q',w);P=keep;qIns(S,q);pl={k:'Q',rk:k,q,w,S,i:0,e:{},c:0,t0:Date.now()}}else pl={k,w,S:build(k,w),i:0,e:{},c:0,t0:Date.now()};if(st.auto&&cur<0)play(0);try{navigator.wakeLock.request('screen').then(l=>pl.wl=l)}catch(e){}enter()}
 const nextN=i=>pl.S.slice(i+1).find(x=>x.t!='r'&&x.t!='f');
 function speak(t){if(st.voice===false||!window.speechSynthesis)return;const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.onstart=()=>au.volume=.35;u.onend=()=>au.volume=1;speechSynthesis.cancel();speechSynthesis.speak(u)}
-function enter(){const s=pl.S[pl.i];clearInterval(pl.ti);pl.paused=0;pl.lb=-1;pl.hf=0;pl.h10=0;pl.pr=0;if(s.d)pl.end=Date.now()+s.d*1e3;if(s.t=='h'){pl.ph='ready';pl.end=Date.now()+5e3}
-const nx=nextN(pl.i),sx=s.sx?', côté '+s.sx:'',T={p:'Prêt ? On commence.',w:s.n,z:s.n+sx,h:s.n+sx+', prends la position',e:s.n+', série '+(s.j+1)+' sur '+s.c+', '+s.R+' répétitions. '+(s.j==0?vFirst(s.tip):s.j==s.c-1?'Dernière série, donne tout !':vEnc()),r:vEnc()+'. Repos, '+s.d+' secondes.'+(s.d>30?' '+vAdv():'')+' Ensuite, '+(nx?nx.n:''),f:'Comment était cet exercice ?'};speak(T[s.t]);
+function enter(){const s=pl.S[pl.i];clearInterval(pl.ti);pl.paused=0;pl.lb=-1;pl.hf=0;pl.h10=0;pl.pr=0;pl.lc=Date.now();if(s.d)pl.end=Date.now()+s.d*1e3;if(s.t=='h'){pl.ph='ready';pl.end=Date.now()+5e3}
+const nx=nextN(pl.i),sx=s.sx?', côté '+s.sx:'',T={p:'Prêt ? On commence.',w:s.n,z:s.n+sx,h:s.n+sx+', prends la position',e:s.t=='e'?s.n+', série '+(s.j+1)+' sur '+s.c+', '+s.R+' répétitions. '+(s.j==s.c-1&&s.c>1?'Dernière série. ':'')+nextCue(s.n,s.tip):'',r:'Repos, '+s.d+' secondes. Ensuite, '+(nx?nx.n:''),f:'Comment était cet exercice ?'};speak(T[s.t]);clearTimeout(pl.c1);clearTimeout(pl.c2);if(s.t=='e'&&st.voice!==false){const q=()=>{if(pl&&pl.S&&pl.S[pl.i]===s){const c=nextCue(s.n,s.tip);if(c)speak(c)}};pl.c1=setTimeout(q,14000);pl.c2=setTimeout(q,28000)}
 if(s.t!='e'&&s.t!='f')pl.ti=setInterval(tick,200);draw()}
 function val(){const s=pl.S[pl.i],tm=s.d?Math.max(0,Math.ceil((pl.end-Date.now())/1e3)):0;if(s.t=='h'&&pl.ph=='run'){if(s.up){const el=Math.floor((Date.now()-pl.run)/1e3);return[el,Math.min(1,el/(s.hi||s.lo||1))]}const rm=Math.max(0,Math.ceil((pl.end-Date.now())/1e3));return[rm,rm/s.dur]}if(s.t=='h')return[tm,tm/5];return[tm,s.d?tm/s.d:0]}
 function tick(){if(pl.paused)return;const s=pl.S[pl.i],[v]=val();vCues(s,v);
 if(s.t=='h'&&pl.ph=='run'){if(s.up){if(v!=pl.lb){pl.lb=v;(v==s.lo||v==s.hi)&&beep(1200)}}else{if(v<=3&&v>0&&v!=pl.lb){pl.lb=v;cd3(v)}if(v<=0){beep(1000);done(1);return}}}
-else{if(v<=3&&v>0&&v!=pl.lb){pl.lb=v;cd3(v)}if(v<=0){if(s.t=='h'){pl.ph='run';pl.run=Date.now();pl.end=Date.now()+s.dur*1e3;pl.lb=-1;beep(1000);speak(vFirst(s.tip)||'Go !');draw()}else nxt();return}}upd()}
+else{if(v<=3&&v>0&&v!=pl.lb){pl.lb=v;cd3(v)}if(v<=0){if(s.t=='h'){pl.ph='run';pl.run=Date.now();pl.end=Date.now()+s.dur*1e3;pl.lb=-1;beep(1000);speak(nextCue(s.n,s.tip)||'Go !');draw()}else nxt();return}}upd()}
 function upd(){const[v,r]=val(),n=$('#pl .tn');if(n){n.textContent=fm(v);n.className='tn'+(v>=100?' lg':'');$('#pl .tp').style.strokeDashoffset=327*(1-r)}}
 function pz(){if(pl.paused){pl.end=Date.now()+pl.rem;pl.paused=0}else{pl.rem=pl.end-Date.now();pl.paused=1}draw()}
 function draw(){const s=pl.S[pl.i],N=pl.S.length,nx=nextN(pl.i),[v,r]=val();let h='',btn='',cap=s.tip||'',ttl=s.n;
@@ -193,7 +193,7 @@ const RK=['Recrue','Initié','Disciple','Athlète','Athlète confirmé','Guerrie
 const xl=l=>Math.round(54*Math.pow(l-1,1.5)*(1+Math.max(0,l-40)/80)),lv=x=>{let l=1;while(l<120&&xl(l+1)<=x)l++;return l},rk=l=>Math.min(11,Math.floor((l-1)/10)),dk=(d=new Date())=>d.toLocaleDateString('sv');
 let showRk=false;
 function T(){const p=st.pf;if(!p||!p.w||!p.h||!p.age)return null;const bmr=10*p.w+6.25*p.h-5*p.age+(p.sx=='f'?-161:5),td=bmr*({s:1.2,l:1.375,m:1.55,a:1.725}[p.act]||1.375),kc=Math.max(Math.round((td+(({gain:bmi(p)<17?500:bmi(p)<18.5?400:300,perte:-400,maintien:0}[effGoal(p)]||0)+trendAdj(p)))/10)*10,p.sx=='f'?1200:1500),pr=Math.round(Math.min(p.w,bmi(p)>=25?24.9*Math.pow(p.h/100,2)*1.1:p.w)*({gain:1.8,perte:2,maintien:1.6}[effGoal(p)]||1.8)),fa=Math.round(kc*.25/9);return{kc,pr,fa,ca:Math.max(0,Math.round((kc-pr*4-fa*9)/4)),wa:Math.round((p.w*35+(DAY[new Date().getDay()]?500:0))/50)*50}}
-function sp(){const g=i=>$('#'+i).value,w=+g('pw');if(!g('pn').trim())return toast('Choisis ton pseudo');st.pf={n:g('pn').trim().slice(0,20),sx:g('ps'),age:+g('pa'),h:+g('ph'),w,g:g('pg'),act:g('pc'),eq:g('pe')};if(w&&(!st.wt.length||st.wt[st.wt.length-1].w!=w))st.wt.push({d:Date.now(),w});save();toast('Profil enregistré');if(!st.plan)setDefault();st.ev0?go('h'):go('ev')}
+function sp(){const g=i=>$('#'+i).value,w=+g('pw');if(!g('pn').trim())return toast('Choisis ton pseudo');st.pf={n:g('pn').trim().slice(0,20),sx:g('ps'),age:+g('pa'),h:+g('ph'),w,g:g('pg'),act:g('pc'),eq:g('pe')};if(w&&(!st.wt.length||st.wt[st.wt.length-1].w!=w))st.wt.push({d:Date.now(),w});save();toast('Profil enregistré');if(!st.plan)setDefault();rkNames();st.ev0?go('h'):go('ev')}
 const FD=[];
 const dm=()=>st.ml[dk()]||[],sm=k=>dm().reduce((a,x)=>a+(x[k]||0),0);
 
@@ -475,10 +475,15 @@ function celebrate(t,sub,r){const d=document.createElement('div');d.id='cel';d.s
 const vFirst=t=>(t||'').split(/(?<=[.!?])\s/)[0],VENC=['Bien joué','Excellent travail','Continue comme ça','Tu es sur la bonne voie','Beau travail','Garde cette énergie','Chaque répétition compte','Tu progresses, ça se voit'],VADV=['Respire profondément pendant le repos.','Bois une gorgée d\'eau.','Relâche les épaules.','Garde le dos droit à la prochaine série.','Concentre-toi sur la qualité de chaque répétition.','Souffle par la bouche à l\'effort.'];let _ve=-1;
 const vEnc=()=>{let i;do i=Math.floor(Math.random()*VENC.length);while(i==_ve);_ve=i;return VENC[i]+(nm()&&Math.random()<.35?', '+nm():'')},vAdv=()=>VADV[Math.floor(Math.random()*VADV.length)];
 function cd3(v){beep(700,.12);speak(''+v)}
+const lcf=t=>t.charAt(0).toLowerCase()+t.slice(1);
+function cuesFor(n,tip){if(!n)return [];const f=FCH[fxk(n)],a=f&&f.tips?[...f.tips,...(f.err||[]).map(x=>'Attention : '+lcf(x))]:[];return a.length?a:(tip||'').split(/(?<=[.!?])\s/).filter(x=>x&&!/^Tempo/.test(x))}
+function nextCue(n,tip){const c=cuesFor(n,tip);if(!c.length)return '';const m=st.vc||(st.vc={}),i=m[n]||0;m[n]=i+1;return c[i%c.length]}
 function vCues(s,v){if(st.voice===false)return;const tm=s.t=='h'?(pl.ph=='run'&&!s.up?s.dur:0):(s.t=='w'||s.t=='z'?s.d:0);
-if(tm>=16&&v==Math.floor(tm/2)&&!pl.hf){pl.hf=1;speak('Moitié, il reste '+v+' secondes. '+vEnc());return}
-if(s.t=='h'&&pl.ph=='run'&&!s.up&&tm>=30&&v==10&&!pl.h10){pl.h10=1;speak('Encore dix secondes, tiens bon !');return}
-if(s.t=='r'&&s.d>=25&&v==10&&!pl.pr){const nx=nextN(pl.i);if(nx){pl.pr=1;speak('Prépare-toi : '+nx.n+'. '+vFirst(nx.tip))}}}
+if(tm>=16&&v==Math.floor(tm/2)&&!pl.hf){pl.hf=1;pl.lc=Date.now();speak('Moitié, il reste '+v+' secondes.');return}
+if(s.t=='h'&&pl.ph=='run'&&!s.up&&tm>=30&&v==10&&!pl.h10){pl.h10=1;pl.lc=Date.now();speak('Encore dix secondes, tiens bon !');return}
+if(s.t=='h'&&pl.ph=='run'&&!s.up&&tm>=24&&v>=7&&Date.now()-(pl.lc||0)>11000){pl.lc=Date.now();const c=nextCue(s.n,s.tip);if(c)speak(c);return}
+if(s.t=='r'&&s.d>=25&&v==10&&!pl.pr){const nx=nextN(pl.i);if(nx){pl.pr=1;speak('Prépare-toi : '+nx.n+'. '+nextCue(nx.n,nx.tip))}}}
+function rkNames(){const f=st.pf&&st.pf.sx=='f';RK[1]=f?'Initiée':'Initié';RK[4]=f?'Athlète confirmée':'Athlète confirmé';RK[5]=f?'Guerrière':'Guerrier';RK[7]=f?'Championne':'Champion'}rkNames();
 /* ---------- programme par défaut FitBlue (affiche) avec progression ---------- */
 st.pg=st.pg||{};
 const fm=v=>v>=100?Math.floor(v/60)+':'+String(v%60).padStart(2,'0'):v;
